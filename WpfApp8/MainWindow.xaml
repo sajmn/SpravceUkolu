@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="500">
+    <Window.Resources>
+        <!-- Styl pro zvýraznění hotového úkolu -->
+        <Style x:Key="HotovyUkolStyle" TargetType="ListBoxItem">
+            <Style.Triggers>
+                <!-- DataTrigger pro změnu barvy pozadí na zelenou -->
+                <DataTrigger Binding="{Binding JeHotovo}" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <!-- Textové pole pro zadání nového úkolu -->
+            <TextBox x:Name="txtNovyUkol" Margin="10" Width="300"/>
+            <!-- Tlačítko pro přidání nového úkolu -->
+            <Button Content="Přidat úkol" Click="BtnPridatUkol_Click" Margin="10"/>
+            <!-- Seznam úkolů -->
+            <ListBox x:Name="lstUkoly" Margin="10" Width="300" DisplayMemberPath="Nazev"/>
+            <!-- Tlačítko pro označení úkolu jako hotového -->
+            <Button Content="Hotovo" Click="BtnOznacitHotovo_Click" Margin="10"/>
+            <!-- Tlačítko pro odstranění vybraného úkolu -->
+            <Button Content="Odstranit" Click="BtnOdstranitUkol_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
